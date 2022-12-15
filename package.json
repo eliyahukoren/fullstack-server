@@ -1,0 +1,14 @@
+{
+	"name": "server",
+	"author": "Eliyahu Koren",
+	"version": "1.0.0",
+	"main": "index.js",
+	"description": "",
+	"license": "MIT",
+	"scripts": {
+		"start": ""
+	},
+	"dependencies": {
+		"express": "^4.18.2"
+	}
+}
