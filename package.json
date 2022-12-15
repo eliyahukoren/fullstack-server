@@ -1,19 +1,30 @@
 {
 	"name": "server",
-	"author": "Eliyahu Koren",
+	"author": {
+		"name": "Eliyahu Koren"
+	},
 	"version": "1.0.0",
 	"main": "index.js",
-	"description": "",
+	"description": "Server( part 1 of 3), Example to how use the NodeJs, Express, and Passport for log in with Google.",
+	"keywords": [
+		"react",
+		"redux",
+		"Express",
+		"passport",
+		"mongodb"
+	],
 	"engines": {
 		"node": "^16.17.0",
 		"yarn": "1.22.19"
 	},
 	"license": "MIT",
 	"scripts": {
-		"start": "node index.js"
+		"start": "node index.js",
+		"dev": "nodemon index.js"
 	},
 	"dependencies": {
 		"express": "^4.18.2",
+		"nodemon": "^2.0.20",
 		"passport": "^0.6.0",
 		"passport-google-oauth20": "^2.0.0"
 	}

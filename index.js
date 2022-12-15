@@ -1,11 +1,9 @@
-const express = require('express');
-debugger;
+const express = require("express");
+require("./services/passport");
+
 const app = express();
+
+require("./routes/authRoutes")(app);
+
 const PORT = process.env.PORT || 5001;
-
-app.get('/', (request, response) => {
-	response.send({hi: 'there'});
-});
-
 app.listen(PORT);
-
