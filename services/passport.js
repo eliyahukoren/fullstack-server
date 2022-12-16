@@ -19,6 +19,7 @@ const googleStrategyOptions = {
 	clientID: keys.googleClientID,
 	clientSecret: keys.googleClientSecret,
 	callbackURL: "/auth/google/callback",
+	proxy: true,
 };
 
 const initUser = (filterQuery, userOptions, done) => {
