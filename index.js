@@ -32,14 +32,14 @@ app.use(passport.session());
 require("./routes/authRoutes")(app);
 
 /* my implementation of routers */
-app.get("/login", (req, res) => {
-	res.sendFile("views/login.html", { root: __dirname });
-});
+// app.get("/login", (req, res) => {
+// 	res.sendFile("views/login.html", { root: __dirname });
+// });
 
 /* my implementation of routers */
-app.use((req, res, next) => {
-	res.status(404).sendFile("views/404.html", {root: __dirname});
-});
+// app.use((req, res, next) => {
+// 	res.status(404).sendFile("views/404.html", {root: __dirname});
+// });
 
 const PORT = process.env.PORT || 5001;
 app.listen(PORT);
