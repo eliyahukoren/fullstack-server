@@ -2,6 +2,7 @@ const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const mongoose = require("mongoose");
 const keys = require("../config/keys");
+const consola = require("consola");
 
 const User = mongoose.model("users");
 
@@ -9,10 +10,9 @@ passport.serializeUser((user, done) => {
 	done(null, user.id);
 });
 
-passport.deserializeUser((id, done) => {
-	User.findById(id).then((user) => {
-		done(null, user);
-	});
+passport.deserializeUser(async (id, done) => {
+	const user = User.findById(id);
+	done(null, user);
 });
 
 const googleStrategyOptions = {
@@ -22,22 +22,22 @@ const googleStrategyOptions = {
 	proxy: true,
 };
 
-const initUser = (filterQuery, userOptions, done) => {
-	User.findOne(filterQuery)
-		.then((existingUser) => {
-			if (existingUser) {
-				// do not create user, user already exists
-				console.log("USER EXISTS");
-				done(null, existingUser);
-			} else {
-				new User(userOptions).save().then((user) => done(null, user));
-				console.log("USER NOT EXISTS");
-			}
-		})
-		.catch((err) => console.log(err));
+const initUser = async (filterQuery, userOptions, done) => {
+	const existingUser = await User.findOne(filterQuery)
+
+	if (existingUser) {
+		// do not create user, user already exists
+		consola.info("USER EXISTS");
+		return done(null, existingUser);
+	}
+
+	consola.info("USER NOT EXISTS");
+	const user = await new User(userOptions).save();
+	done(null, user);
+
 };
 
-const verify = (accessToken, refreshToken, profile, done) => {
+const verifyCallback = (accessToken, refreshToken, profile, done) => {
 	initUser(
 		{ googleId: profile.id },
 		{
@@ -48,6 +48,6 @@ const verify = (accessToken, refreshToken, profile, done) => {
 	);
 };
 
-passport.use(new GoogleStrategy(googleStrategyOptions, verify));
+passport.use(new GoogleStrategy(googleStrategyOptions, verifyCallback));
 
 
