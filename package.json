@@ -5,7 +5,7 @@
 	},
 	"version": "1.0.0",
 	"main": "index.js",
-	"description": "Server( part 1 of 3), Example to how use the NodeJs, Express, and Passport for log in with Google.",
+	"description": "Server(part 1 of 3), Example to how use the NodeJs, Express, and Passport for log in with Google.",
 	"keywords": [
 		"react",
 		"redux",
@@ -20,9 +20,12 @@
 	"license": "MIT",
 	"scripts": {
 		"start": "node index.js",
-		"dev": "nodemon index.js"
+		"server": "nodemon index.js",
+		"client": "yarn --cwd client/ start",
+		"dev": "concurrently \"yarn server\" \"yarn client\""
 	},
 	"dependencies": {
+		"concurrently": "^7.6.0",
 		"cookie-session": "^2.0.0",
 		"express": "^4.18.2",
 		"mongoose": "^6.8.0",
