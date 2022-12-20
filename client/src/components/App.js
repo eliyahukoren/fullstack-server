@@ -1,10 +1,10 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Header from "./Header/Header";
 
 // import { useDispatch} from "react-redux";
 // import { increment } from "../features/authSlice";
 // import { simplement } from "../features/anySlice";
 
-const Header = () => <h2>Header</h2>;
 const Dashboard = () => <h2>Dashboard</h2>;
 const SurveyNew = () => <h2>SurveyNew</h2>;
 const Landing = () => <h2>Landing</h2>;
@@ -14,7 +14,7 @@ const App = () => {
 	// const dispatch = useDispatch();
 
 	return (
-		<div>
+		<div className="container">
 			<Header />
 			<BrowserRouter>
 				<Switch>
