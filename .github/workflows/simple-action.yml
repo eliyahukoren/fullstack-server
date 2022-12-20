@@ -1,4 +1,4 @@
-name: Init Actions Demo
+name: Init Actions On Server
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [push]
 jobs:
