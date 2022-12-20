@@ -14,7 +14,7 @@ const App = () => {
 	// const dispatch = useDispatch();
 
 	return (
-		<div>
+		<div className="container">
 			<Header />
 			<BrowserRouter>
 				<Switch>
