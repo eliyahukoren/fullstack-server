@@ -8,18 +8,21 @@ module.exports = (app) => {
 			scope: ["profile", "email"],
 		})
 	);
+
 	app.get(
 		"/auth/google/callback",
 		passport.authenticate("google"),
 		(req, res) => {
-			res.redirect("/survey");
+			res.redirect("/surveys");
 		}
-		);
+	);
 
-	app.get("/api/logout", (req, res) => {
+	const logoutUser = (req, res) => {
 		req.logout();
-		res.send(req.user);
-	})
+		res.redirect("/");
+	};
+
+	app.get("/api/logout", logoutUser);
 
 	// app.get("/auth/github", passport.authenticate("github", {scope: ['user:email']}));
 	// app.get("/auth/github/callback", passport.authenticate("github"));
