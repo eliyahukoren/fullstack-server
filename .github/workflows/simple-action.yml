@@ -1,5 +1,5 @@
 name: Init Actions On Server
-run-name: ${{ github.actor }} `:` is testing ${{ github.event.head_commit.message }} 🚀
+run-name: 🚀 ${{ github.actor }} - is testing ${{ github.event.head_commit.message }} 🚀
 on:
   push:
     branches: [ main ]
