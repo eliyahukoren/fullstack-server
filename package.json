@@ -18,7 +18,10 @@
 		"start": "node server/index.js",
 		"server": "nodemon server/index.js",
 		"client": "yarn --cwd client/ start",
-		"dev": "concurrently \"yarn server\" \"yarn client\""
+		"dev": "concurrently \"yarn server\" \"yarn client\"",
+		"init:server": "yarn --cwd server/ install",
+		"init:client": "yarn --cwd client/ install",
+		"init:app": "concurrently \"yarn install\" \"yarn server\" \"yarn client\""
 	},
 	"dependencies": {
 		"concurrently": "^7.6.0",
