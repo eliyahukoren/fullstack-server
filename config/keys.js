@@ -1,4 +1,4 @@
-// config/keys.js - figure out what set of credentionals to return
+// config/keys.js - figure out what set of credentials to return
 
 if( process.env.NODE_ENV === 'production'){
 	module.exports = require("./prod");
