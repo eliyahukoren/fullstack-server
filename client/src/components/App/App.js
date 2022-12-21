@@ -23,7 +23,7 @@ class App extends Component {
 					<Switch>
 						<Route path="/" exact component={Landing} />
 						<Route path="/surveys" exact component={Dashboard} />
-						<Route path="/surveys/new" exact component={SurveyNew} />
+						<Route path="/survey/new" exact component={SurveyNew} />
 						<Route component={PageNotFound} />
 					</Switch>
 				</BrowserRouter>
