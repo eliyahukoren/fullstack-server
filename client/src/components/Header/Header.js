@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import Payments from "../Payments/Payments";
 
 class Header extends Component {
 	renderContent() {
-		switch(this.props.auth){
+		switch (this.props.auth) {
 			case null:
 				return;
 			case false:
@@ -14,16 +15,14 @@ class Header extends Component {
 					</li>
 				);
 			default:
-				return (
-					<>
-						<li>
-							<a href="/survey/new">New Survey</a>
-						</li>
-						<li>
-							<a href="/api/logout">Logout</a>
-						</li>
-					</>
-				);
+				return [
+					<li key="payment">
+						<Payments />
+					</li>,
+					<li key="logout">
+						<a href="/api/logout">Logout</a>
+					</li>,
+				];
 		}
 	}
 
@@ -33,7 +32,7 @@ class Header extends Component {
 				<div className="nav-wrapper">
 					<Link
 						className="left brand-logo"
-						to={this.props.auth ? '/surveys' : '/'}
+						to={this.props.auth ? "/surveys" : "/"}
 					>
 						Emaily
 					</Link>

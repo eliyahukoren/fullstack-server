@@ -10,10 +10,10 @@ import "materialize-css/dist/css/materialize.min.css";
 
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	<Provider store={store}>
 		<App />
 	</Provider>
 );
+
