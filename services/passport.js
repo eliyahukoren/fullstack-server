@@ -11,7 +11,7 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser(async (id, done) => {
-	const user = User.findById(id);
+	const user = await User.findById(id);
 	done(null, user);
 });
 
@@ -23,16 +23,17 @@ const googleStrategyOptions = {
 };
 
 const initUser = async (filterQuery, userOptions, done) => {
+	console.log({ filterQuery, userOptions });
 	const existingUser = await User.findOne(filterQuery)
 
 	if (existingUser) {
 		// do not create user, user already exists
-		consola.info("USER EXISTS");
+		consola.info("USER EXISTS", existingUser);
 		return done(null, existingUser);
 	}
 
-	consola.info("USER NOT EXISTS");
 	const user = await new User(userOptions).save();
+	consola.info("USER NOT EXISTS", user);
 	done(null, user);
 
 };
@@ -40,10 +41,7 @@ const initUser = async (filterQuery, userOptions, done) => {
 const verifyCallback = (accessToken, refreshToken, profile, done) => {
 	initUser(
 		{ googleId: profile.id },
-		{
-			googleId: profile.id,
-			age: 52,
-		},
+		{ googleId: profile.id, age: 52, },
 		done
 	);
 };
