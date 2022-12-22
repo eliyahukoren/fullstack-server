@@ -88,3 +88,4 @@ dist
 .serverless/
 
 .localnotes
+test.js
