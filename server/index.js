@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cookieSession = require("cookie-session");
+const bodyParser = require("body-parser");
 const passport = require("passport");
 const keys = require("./config/keys");
 require("./models/User");
@@ -27,9 +28,11 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(bodyParser.json());
 
 // routers
 require("./routes/authRoutes")(app);
+require("./routes/billingRoutes")(app);
 
 /* my implementation of routers */
 // app.get("/login", (req, res) => {
